@@ -1,17 +1,17 @@
-name: if rss then slack
 on:
   rss:
-    url: ${{ RSS_WALLSTREETCN_LIVE }}
+    url: ${{ RSS_WALLSTREETCN_LIVE }} 
 jobs:
-  slack:
-    - name: Send a message to Slack
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_MEDIA_HOOK }}
-      uses: Ilshidur/action-slack@2.1.0
-      with:
-        args: |
-          New rss items
-
-          > ${{ on.rss.ouputs.contentSnippet }}
-
-          > <${{ on.rss.outputs.link }}|Click here> for details.
+  print:
+    name: Print
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Outputs
+        env:
+          title: ${{on.rss.outputs.title}}
+          contentSnippet: ${{on.rss.outputs.contentSnippet}}
+          link: ${{on.rss.outputs.link}}
+        run: |
+          echo title: $title
+          echo contentSnippet: $contentSnippet
+          echo link: $link
