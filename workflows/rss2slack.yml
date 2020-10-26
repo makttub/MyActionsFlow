@@ -1,6 +1,6 @@
 on:
   rss:
-    url: ${{ RSS_WALLSTREETCN_LIVE }} 
+    url: ${{ secrets.RSS_WALLSTREETCN_LIVE }} 
 jobs:
   print:
     name: Print
