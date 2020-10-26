@@ -1,7 +1,7 @@
 name: if rss then slack
 on:
   rss:
-    url: ${{ RSS_WALLSTREETCN_LIVE }}
+    url: ${{ secrets.RSS_WALLSTREETCN_LIVE }}
 jobs:
   slack:
     - name: Send a message to Slack
